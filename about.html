@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market Support — About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html"><img src="logo.png" alt="Market Support logo"></a>
+    <nav class="nav">
+      <a href="index.html" class="">Home</a>
+      <a href="services.html" class="">Services</a>
+      <a href="work.html" class="">Selected Work</a>
+      <a href="about.html" class="active">About</a>
+      <a href="facilities.html" class="">Facilities</a>
+      <a href="contact.html" class="">Contact</a>
+    </nav>
+    <a class="btn btn-primary" href="contact.html">Request a Proposal</a>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="container fade-up">
+    <div class="kicker">About</div>
+    <h1>An established local research partner with international standards</h1>
+    <p class="lead">This page now includes a placeholder team layout so you can review the presentation style before uploading real director photos.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container">
+    <div class="page-banner fade-up">
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1600&auto=format&fit=crop" alt="About banner">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid-2">
+    <article class="card card-lg fade-up">
+      <div class="kicker">Mission</div>
+      <h2>Best consumer understanding, used creatively to build strong brands and innovate successfully</h2>
+      <p class="muted">That mission sets the tone for the website: approachable, thoughtful, and grounded in work that is genuinely useful for clients.</p>
+    </article>
+    <article class="card card-lg fade-up">
+      <div class="kicker">Strengths</div>
+      <ul class="list">
+        <li><span class="bullet"></span><span>Quality at every stage of research design, fieldwork, and analysis</span></li>
+        <li><span class="bullet"></span><span>Experienced people and close client partnership</span></li>
+        <li><span class="bullet"></span><span>Customization across diverse objectives and categories</span></li>
+        <li><span class="bullet"></span><span>Flexibility and responsiveness as an independent team</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section section-muted">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div>
+        <div class="kicker">Leadership</div>
+        <h2>Suggested layout for director profiles with photos</h2>
+      </div>
+      <p class="lead">Each card is designed to hold a portrait, role, and short approachable summary — enough to build trust without feeling too formal or CV-heavy.</p>
+    </div>
+
+    <div class="team-grid">
+      <article class="card team-card fade-up">
+        <div class="team-photo"></div>
+        <div class="team-info">
+          <h3>Chalit Manipalviratn</h3>
+          <div class="team-role">Senior Research Director</div>
+          <div class="team-note">Experienced in quantitative research, advanced analysis, and business intelligence learning across multiple industries.</div>
+        </div>
+      </article>
+
+      <article class="card team-card fade-up">
+        <div class="team-photo"></div>
+        <div class="team-info">
+          <h3>Sirin Suchintabandid</h3>
+          <div class="team-role">Research Director</div>
+          <div class="team-note">Focused on brand health, tracking, loyalty, customer satisfaction, and campaign effectiveness studies.</div>
+        </div>
+      </article>
+
+      <article class="card team-card fade-up">
+        <div class="team-photo"></div>
+        <div class="team-info">
+          <h3>Sanida Na Ranong</h3>
+          <div class="team-role">Associate Director</div>
+          <div class="team-note">Strong experience in concept, product, and packaging studies across a wide range of categories.</div>
+        </div>
+      </article>
+
+      <article class="card team-card fade-up">
+        <div class="team-photo"></div>
+        <div class="team-info">
+          <h3>Chatinee Trilertmala</h3>
+          <div class="team-role">Senior Research Director</div>
+          <div class="team-note">Works across both quantitative and qualitative disciplines, from attitude and usage to new product exploration.</div>
+        </div>
+      </article>
+
+      <article class="card team-card fade-up">
+        <div class="team-photo"></div>
+        <div class="team-info">
+          <h3>Chaporn Manipalviratn</h3>
+          <div class="team-role">Research Director</div>
+          <div class="team-note">Specializes in qualitative research with an eye for deeper interpretation and thoughtful insight development.</div>
+        </div>
+      </article>
+
+      <article class="card team-card fade-up">
+        <div class="team-photo"></div>
+        <div class="team-info">
+          <h3>Moderation & Translation Support</h3>
+          <div class="team-role">Extended Team</div>
+          <div class="team-note">A flexible placeholder for additional moderator, translator, or wider leadership presentation if you want to expand later.</div>
+        </div>
+      </article>
+    </div>
+
+    <div class="soft-note fade-up">Once you upload real photos, I can replace these placeholders and fine-tune image crop, lighting consistency, and name-card balance.</div>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="container">Market Support — website draft structure</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market Support — Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html"><img src="logo.png" alt="Market Support logo"></a>
+    <nav class="nav">
+      <a href="index.html" class="">Home</a>
+      <a href="services.html" class="">Services</a>
+      <a href="work.html" class="">Selected Work</a>
+      <a href="about.html" class="">About</a>
+      <a href="facilities.html" class="">Facilities</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <a class="btn btn-primary" href="contact.html">Request a Proposal</a>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="container fade-up">
+    <div class="kicker">Contact</div>
+    <h1>Let’s discuss your next project</h1>
+    <p class="lead">A friendly, simple contact page works better than a crowded one. This is the right place for the main call to action.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid-2">
+    <article class="card card-lg fade-up">
+      <h3>Get in touch</h3>
+      <p class="muted">Whether you are planning a new study, refining a product idea, or looking for a reliable research partner in Thailand, we would be happy to hear from you.</p>
+      <ul class="list">
+        <li><span class="bullet"></span><span>Email: contact@marketsupport.co.th</span></li>
+        <li><span class="bullet"></span><span>Phone: 02-255-8575</span></li>
+        <li><span class="bullet"></span><span>Bangkok, Thailand</span></li>
+      </ul>
+    </article>
+    <article class="card card-lg fade-up">
+      <h3>Suggested contact form layout</h3>
+      <ul class="list">
+        <li><span class="bullet"></span><span>Name</span></li>
+        <li><span class="bullet"></span><span>Company</span></li>
+        <li><span class="bullet"></span><span>Email</span></li>
+        <li><span class="bullet"></span><span>Project type</span></li>
+        <li><span class="bullet"></span><span>Short message</span></li>
+      </ul>
+      <div class="soft-note">For the next draft, I can turn this into a real working form layout with styled fields.</div>
+    </article>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="container">Market Support — website draft structure</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
