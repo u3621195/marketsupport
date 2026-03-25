@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Support — Thailand's Premier Market Research Agency</title>
+<link rel="icon" type="image/png" href="MSP_Logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #134e4a;
+  --teal: #0d9488;
+  --green: #10b981;
+  --light: #5eead4;
+  --soft: #f0fdfa;
+  --cream: #fafaf9;
+  --warm: #fffbeb;
+  --white: #ffffff;
+  --text: #1c1917;
+  --text2: #57534e;
+  --muted: #a8a29e;
+  --border: #e7e5e4;
+  --r: 20px;
+  --rs: 12px;
+  --rf: 9999px;
+  --sh: 0 4px 20px rgba(0,0,0,0.06);
+  --sh2: 0 10px 40px rgba(0,0,0,0.08);
+  --sh3: 0 20px 60px rgba(0,0,0,0.1);
+  --tr: 0.35s cubic-bezier(0.4,0,0.2,1);
+  --grad: linear-gradient(135deg, #134e4a 0%, #0d9488 50%, #10b981 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',-apple-system,sans-serif;color:var(--text);background:var(--white);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 0;transition:var(--tr);background:transparent;}
+nav.scrolled{background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:10px 0;box-shadow:0 1px 12px rgba(0,0,0,0.06);}
+nav.dark-nav{background:transparent;}
+nav .container{display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;cursor:pointer;transition:var(--tr);}
+.nav-logo img{height:40px;transition:var(--tr);filter:brightness(0) invert(1);}
+nav.scrolled .nav-logo img{filter:none;}
+.nav-links{display:flex;gap:6px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.85);font-size:0.85rem;font-weight:500;padding:8px 16px;border-radius:var(--rf);transition:var(--tr);}
+nav.scrolled .nav-links a{color:var(--text2);}
+.nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,0.15);color:var(--white);}
+nav.scrolled .nav-links a:hover,nav.scrolled .nav-links a.active{background:var(--soft);color:var(--teal);}
+.nav-cta{background:var(--white);color:var(--deep);padding:10px 24px;border-radius:var(--rf);font-size:0.85rem;font-weight:600;transition:var(--tr);box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+nav.scrolled .nav-cta{background:var(--teal);color:var(--white);}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+.mobile-toggle span{display:block;width:22px;height:2px;background:white;margin:5px 0;border-radius:2px;transition:var(--tr);}
+nav.scrolled .mobile-toggle span{background:var(--deep);}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--white);padding:16px 24px;box-shadow:var(--sh2);z-index:999;}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;padding:12px 0;color:var(--text);font-weight:500;border-bottom:1px solid var(--border);}
+
+/* ─── PAGE SYSTEM ─── */
+.page{display:none;opacity:0;transition:opacity 0.4s ease;}
+.page.active{display:block;opacity:1;}
+
+/* ─── HERO (HOME) ─── */
+.hero{min-height:100vh;display:flex;align-items:center;background:var(--grad);position:relative;overflow:hidden;padding:100px 0 80px;}
+.hero-dec{position:absolute;inset:0;overflow:hidden;}
+.hero-dec .c{position:absolute;border-radius:50%;background:rgba(255,255,255,0.05);}
+.hero-dec .c1{width:600px;height:600px;top:-200px;right:-100px;}
+.hero-dec .c2{width:400px;height:400px;bottom:-100px;left:-80px;background:rgba(255,255,255,0.03);}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);padding:8px 18px;border-radius:var(--rf);margin-bottom:20px;font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.9);}
+.hero-tag .dot{width:6px;height:6px;border-radius:50%;background:#34d399;}
+.hero h1{font-size:3.4rem;color:var(--white);margin-bottom:20px;font-weight:700;letter-spacing:-0.02em;line-height:1.12;}
+.hero h1 .hl{background:linear-gradient(120deg,#fcd34d,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{font-size:1.1rem;color:rgba(255,255,255,0.8);line-height:1.8;margin-bottom:36px;max-width:480px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{padding:14px 32px;border-radius:var(--rf);font-weight:600;font-size:0.95rem;transition:var(--tr);display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:inherit;}
+.btn-w{background:var(--white);color:var(--deep);box-shadow:0 4px 16px rgba(0,0,0,0.12);}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.16);}
+.btn-g{background:rgba(255,255,255,0.12);color:var(--white);border:1px solid rgba(255,255,255,0.25);}
+.btn-g:hover{background:rgba(255,255,255,0.2);}
+.btn-teal{background:var(--teal);color:var(--white);box-shadow:0 4px 16px rgba(13,148,136,0.3);}
+.btn-teal:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(13,148,136,0.4);}
+.btn-outline{background:transparent;color:var(--teal);border:2px solid var(--teal);}
+.btn-outline:hover{background:var(--soft);}
+
+.hero-collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:460px;}
+.col-img{border-radius:var(--r);overflow:hidden;background-size:cover;background-position:center;box-shadow:0 8px 30px rgba(0,0,0,0.2);transition:var(--tr);position:relative;}
+.col-img:hover{transform:scale(1.02);}
+.col-img:nth-child(1){grid-row:1/3;background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80');}
+.col-img:nth-child(2){background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80');}
+.col-img:nth-child(3){background-image:url('https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&q=80');}
+.col-label{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);color:white;padding:5px 12px;border-radius:var(--rf);font-size:0.7rem;font-weight:500;}
+
+/* Stats Bar */
+.stats-bar{position:relative;z-index:2;margin-top:-48px;padding-bottom:0;}
+.stats-inner{background:var(--white);border-radius:var(--r);box-shadow:var(--sh3);display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-item{padding:32px;text-align:center;border-right:1px solid #f5f5f4;transition:var(--tr);}
+.stat-item:last-child{border-right:none;}
+.stat-item:hover{background:var(--soft);border-radius:var(--r);}
+.stat-num{font-size:2.4rem;font-weight:700;color:var(--teal);line-height:1;}
+.stat-lbl{font-size:0.82rem;color:var(--muted);margin-top:6px;font-weight:500;}
+
+/* ─── SECTION UTILS ─── */
+section.sec{padding:100px 0;}
+.sec-tag{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);background:var(--soft);padding:6px 16px;border-radius:var(--rf);margin-bottom:12px;}
+.sec-title{font-size:2.5rem;margin-bottom:14px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;}
+.sec-desc{font-size:1.05rem;color:var(--text2);max-width:560px;line-height:1.8;}
+.sec-header{margin-bottom:56px;}
+.sec-header.center{text-align:center;}
+.sec-header.center .sec-tag{margin:0 auto 12px;}
+.sec-header.center .sec-desc{margin:0 auto;}
+
+/* Page Banner */
+.page-banner{background:var(--grad);padding:160px 0 80px;position:relative;overflow:hidden;}
+.page-banner .c{position:absolute;border-radius:50%;background:rgba(255,255,255,0.04);}
+.page-banner .c1{width:400px;height:400px;top:-100px;right:-50px;}
+.page-banner .c2{width:250px;height:250px;bottom:-50px;left:10%;}
+.page-banner .container{position:relative;z-index:1;}
+.page-banner h1{font-size:2.8rem;color:var(--white);font-weight:700;margin-bottom:14px;line-height:1.15;}
+.page-banner p{font-size:1.1rem;color:rgba(255,255,255,0.75);max-width:560px;line-height:1.8;}
+.breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:16px;font-size:0.82rem;color:rgba(255,255,255,0.5);}
+.breadcrumb a{color:rgba(255,255,255,0.6);transition:var(--tr);}
+.breadcrumb a:hover{color:var(--white);}
+.breadcrumb .sep{font-size:0.6rem;}
+
+/* ─── CARDS / GRIDS ─── */
+.card{background:var(--white);border-radius:var(--r);padding:36px 28px;border:1px solid var(--border);transition:var(--tr);}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sh2);}
+.card-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:20px;}
+.card h3{font-size:1.1rem;font-weight:700;margin-bottom:10px;}
+.card p{font-size:0.88rem;color:var(--text2);line-height:1.7;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+
+/* Photo Card */
+.photo-card{border-radius:var(--r);overflow:hidden;background:var(--cream);border:1px solid var(--border);transition:var(--tr);}
+.photo-card:hover{transform:translateY(-6px);box-shadow:var(--sh2);}
+.photo-card .img{height:200px;background-size:cover;background-position:center;}
+.photo-card .body{padding:24px;}
+.photo-card h3{font-size:1.05rem;font-weight:700;margin-bottom:4px;}
+.photo-card .sub{font-size:0.78rem;color:var(--muted);margin-bottom:14px;}
+.feat{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:0.82rem;color:var(--text2);}
+.feat .ck{color:var(--teal);font-weight:700;flex-shrink:0;}
+
+/* Team Card */
+.t-card{background:var(--cream);border-radius:var(--r);padding:36px 28px;text-align:center;border:1px solid var(--border);transition:var(--tr);}
+.t-card:hover{transform:translateY(-6px);box-shadow:var(--sh2);background:var(--white);}
+.t-avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;color:var(--white);}
+.t-card h3{font-size:1.05rem;font-weight:700;}
+.t-role{font-size:0.75rem;color:var(--teal);font-weight:600;margin:4px 0 14px;text-transform:uppercase;letter-spacing:0.05em;}
+.t-card p{font-size:0.85rem;color:var(--text2);line-height:1.7;}
+.t-email{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:0.8rem;color:var(--teal);font-weight:500;}
+
+/* Methods */
+.method{padding:14px 18px;background:var(--cream);border-radius:var(--rs);font-size:0.9rem;font-weight:500;color:var(--deep);transition:var(--tr);display:flex;align-items:center;gap:10px;border:1px solid transparent;}
+.method:hover{background:var(--soft);border-color:var(--teal);transform:translateX(4px);}
+.method .ck{color:var(--teal);font-weight:700;}
+
+/* Discipline Step */
+.d-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r);padding:28px 20px;transition:var(--tr);}
+.d-card:hover{background:rgba(255,255,255,0.12);transform:translateY(-6px);}
+.d-num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.12);color:#5eead4;font-size:0.85rem;font-weight:700;margin-bottom:16px;}
+.d-card h3{font-size:0.95rem;font-weight:600;margin-bottom:10px;color:var(--white);}
+.d-card p{font-size:0.8rem;color:rgba(255,255,255,0.55);line-height:1.7;}
+.d-card ul{list-style:none;margin-top:10px;}
+.d-card ul li{font-size:0.78rem;color:rgba(255,255,255,0.5);padding:3px 0;padding-left:14px;position:relative;}
+.d-card ul li::before{content:'→';position:absolute;left:0;color:#5eead4;font-size:0.7rem;}
+
+/* Industry Pills */
+.pill-cloud{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+.pill{padding:10px 24px;border-radius:var(--rf);font-size:0.88rem;font-weight:500;transition:var(--tr);border:1px solid transparent;cursor:default;}
+.pill:hover{transform:translateY(-2px);box-shadow:var(--sh);}
+.pill-lg{font-size:1rem;font-weight:600;padding:14px 32px;}
+.p1{background:#ccfbf1;color:#134e4a;border-color:#99f6e4;}
+.p2{background:#dbeafe;color:#1e3a5f;border-color:#93c5fd;}
+.p3{background:#fef3c7;color:#713f12;border-color:#fcd34d;}
+.p4{background:#fce7f3;color:#831843;border-color:#f9a8d4;}
+.p5{background:#d1fae5;color:#064e3b;border-color:#6ee7b7;}
+.p6{background:#e0e7ff;color:#312e81;border-color:#a5b4fc;}
+
+/* Client Card */
+.cl-card{background:var(--cream);border-radius:var(--r);padding:28px 24px;text-align:center;border:1px solid var(--border);transition:var(--tr);}
+.cl-card:hover{transform:translateY(-4px);box-shadow:var(--sh);background:var(--white);}
+.cl-icon{font-size:2rem;margin-bottom:10px;}
+.cl-card h4{font-size:0.95rem;font-weight:600;margin-bottom:6px;}
+.cl-card p{font-size:0.78rem;color:var(--muted);line-height:1.6;}
+
+/* About 2-col */
+.about-2col{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-img-wrap{border-radius:24px;overflow:hidden;position:relative;height:480px;background-size:cover;background-position:center;box-shadow:var(--sh2);}
+.about-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,148,136,0.25),transparent 50%);}
+.float-badge{position:absolute;bottom:20px;left:20px;right:20px;z-index:2;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-radius:var(--rs);padding:18px 22px;display:flex;align-items:center;gap:14px;box-shadow:var(--sh);}
+.float-badge .fi{width:44px;height:44px;border-radius:12px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.float-badge h4{font-size:0.88rem;font-weight:600;}
+.float-badge p{font-size:0.75rem;color:var(--muted);}
+
+/* Dark Section */
+.dark-sec{background:var(--grad);color:var(--white);padding:100px 0;position:relative;overflow:hidden;}
+.dark-sec::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.04);}
+.dark-sec .sec-tag{background:rgba(255,255,255,0.12);color:#99f6e4;}
+.dark-sec .sec-title{color:var(--white);}
+.dark-sec .sec-desc{color:rgba(255,255,255,0.7);}
+
+/* CTA */
+.cta-sec{background:var(--grad);padding:100px 0;text-align:center;position:relative;overflow:hidden;}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,0.08),transparent 50%);}
+.cta-sec .container{position:relative;z-index:1;}
+.cta-sec h2{font-size:2.6rem;color:var(--white);font-weight:700;line-height:1.15;margin-bottom:14px;}
+.cta-sec p{font-size:1.05rem;color:rgba(255,255,255,0.75);margin:0 auto 36px;max-width:480px;}
+
+/* Contact Form */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;}
+.contact-info .info-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--border);}
+.contact-info .info-icon{width:48px;height:48px;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.contact-info h4{font-size:0.95rem;font-weight:600;margin-bottom:4px;}
+.contact-info p{font-size:0.88rem;color:var(--text2);}
+.contact-form{background:var(--cream);border-radius:var(--r);padding:40px;border:1px solid var(--border);}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:8px;color:var(--text);}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;border:1px solid var(--border);border-radius:var(--rs);font-family:inherit;font-size:0.95rem;transition:var(--tr);background:var(--white);}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,0.1);}
+.form-group textarea{resize:vertical;min-height:120px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+/* Footer */
+footer{background:#0f1f2a;color:rgba(255,255,255,0.6);padding:64px 0 28px;}
+.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1.2fr;gap:40px;}
+.footer-brand h3{font-size:1.4rem;color:var(--white);margin-bottom:12px;font-weight:700;}
+.footer-brand h3 span{color:var(--light);}
+.footer-brand .ft-logo{height:48px;margin-bottom:16px;filter:brightness(0) invert(1);}
+.footer-brand p{font-size:0.85rem;line-height:1.8;}
+.ft-col h4{font-size:0.75rem;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px;}
+.ft-col a{display:block;color:rgba(255,255,255,0.5);font-size:0.85rem;padding:4px 0;transition:var(--tr);cursor:pointer;}
+.ft-col a:hover{color:var(--light);}
+.ft-bottom{border-top:1px solid rgba(255,255,255,0.08);margin-top:40px;padding-top:24px;display:flex;justify-content:space-between;font-size:0.78rem;color:rgba(255,255,255,0.3);}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.rv.vis{opacity:1;transform:translateY(0);}
+.rv-d1{transition-delay:0.1s;}.rv-d2{transition-delay:0.2s;}.rv-d3{transition-delay:0.3s;}.rv-d4{transition-delay:0.35s;}
+
+/* Tabs */
+.tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap;}
+.tab{padding:12px 24px;border-radius:var(--rf);border:1px solid var(--border);background:var(--white);font-size:0.9rem;font-weight:500;cursor:pointer;transition:var(--tr);font-family:inherit;display:flex;align-items:center;gap:8px;}
+.tab.active{background:var(--teal);color:var(--white);border-color:var(--teal);box-shadow:0 4px 16px rgba(13,148,136,0.25);}
+.tab:hover:not(.active){background:var(--soft);border-color:var(--teal);}
+.tab-panel{display:none;animation:fadeIn 0.4s ease;}
+.tab-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* Home preview sections */
+.home-preview{background:var(--cream);padding:100px 0;}
+.preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px;}
+.preview-card{background:var(--white);border-radius:var(--r);overflow:hidden;border:1px solid var(--border);transition:var(--tr);cursor:pointer;}
+.preview-card:hover{transform:translateY(-6px);box-shadow:var(--sh2);}
+.preview-card .pimg{height:180px;background-size:cover;background-position:center;position:relative;}
+.preview-card .pimg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.3),transparent);}
+.preview-card .pbody{padding:24px;}
+.preview-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;}
+.preview-card p{font-size:0.88rem;color:var(--text2);line-height:1.6;}
+.link-arrow{display:inline-flex;align-items:center;gap:6px;color:var(--teal);font-weight:600;font-size:0.88rem;margin-top:12px;transition:var(--tr);}
+.link-arrow:hover{gap:10px;}
+.center-link{text-align:center;margin-top:24px;}
+
+/* Map */
+.map-frame{border-radius:var(--r);overflow:hidden;height:350px;background:#e5e5e5;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1rem;border:1px solid var(--border);}
+
+/* Responsive */
+@media(max-width:1024px){
+  .hero h1{font-size:2.6rem;}.hero-grid,.about-2col,.contact-grid{grid-template-columns:1fr;gap:40px;}
+  .hero-collage{height:340px;}.grid-4{grid-template-columns:repeat(2,1fr);}
+  .grid-5{grid-template-columns:repeat(3,1fr);}.stats-inner{grid-template-columns:repeat(2,1fr);}
+  .stat-item:nth-child(2){border-right:none;}.footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .nav-links{display:none !important;}.mobile-toggle{display:block;}
+  section.sec{padding:64px 0;}.hero{min-height:auto;padding:120px 0 60px;}
+  .hero h1{font-size:2rem;}.hero-collage{height:240px;}
+  .stats-inner{grid-template-columns:1fr 1fr;}.sec-title{font-size:1.9rem;}
+  .page-banner h1{font-size:2rem;}.page-banner{padding:130px 0 60px;}
+  .grid-2,.grid-3,.grid-4,.grid-5,.preview-grid{grid-template-columns:1fr;}
+  .about-img-wrap{height:280px;}.footer-grid{grid-template-columns:1fr;gap:28px;}
+  .ft-bottom{flex-direction:column;gap:8px;text-align:center;}.form-row{grid-template-columns:1fr;}
+  .contact-grid{gap:32px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="navbar">
+  <div class="container">
+    <a class="nav-logo" onclick="goto('home')"><img src="MSP_Logo.png" alt="Market Support"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="goto('home')" data-page="home">Home</a></li>
+      <li><a onclick="goto('about')" data-page="about">About</a></li>
+      <li><a onclick="goto('services')" data-page="services">Services</a></li>
+      <li><a onclick="goto('team')" data-page="team">Team</a></li>
+      <li><a onclick="goto('facilities')" data-page="facilities">Facilities</a></li>
+      <li><a onclick="goto('clients')" data-page="clients">Clients</a></li>
+    </ul>
+    <a class="nav-cta" onclick="goto('contact')">Contact Us</a>
+    <button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="goto('home');closeMobile()">Home</a>
+  <a onclick="goto('about');closeMobile()">About</a>
+  <a onclick="goto('services');closeMobile()">Services</a>
+  <a onclick="goto('team');closeMobile()">Team</a>
+  <a onclick="goto('facilities');closeMobile()">Facilities</a>
+  <a onclick="goto('clients');closeMobile()">Clients</a>
+  <a onclick="goto('contact');closeMobile()">Contact Us</a>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PAGE: HOME                             -->
+<!-- ═══════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-dec"><div class="c c1"></div><div class="c c2"></div></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tag"><span class="dot"></span> ESOMAR Member · Est. 1995</div>
+          <h1>Insights That Move <span class="hl">Markets Forward</span></h1>
+          <p>Thailand's trusted market research partner — delivering local understanding with international-standard expertise to help brands grow smarter.</p>
+          <div class="hero-btns">
+            <a class="btn btn-w" onclick="goto('services')">Explore Our Services →</a>
+            <a class="btn btn-g" onclick="goto('contact')">Talk to Us</a>
+          </div>
+        </div>
+        <div class="hero-collage">
+          <div class="col-img"><span class="col-label">📊 Research in Action</span></div>
+          <div class="col-img"><span class="col-label">💡 Strategic Insights</span></div>
+          <div class="col-img"><span class="col-label">🤝 Collaboration</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item"><div class="stat-num">30+</div><div class="stat-lbl">Years of Experience</div></div>
+        <div class="stat-item"><div class="stat-num">30+</div><div class="stat-lbl">Full-Time Professionals</div></div>
+        <div class="stat-item"><div class="stat-num">300+</div><div class="stat-lbl">Interviewers On Call</div></div>
+        <div class="stat-item"><div class="stat-num">20+</div><div class="stat-lbl">Industry Verticals</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Home: About Preview -->
+  <section class="sec">
+    <div class="container">
+      <div class="about-2col">
+        <div class="about-img-wrap rv" style="background-image:url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=700&q=80');">
+          <div class="float-badge">
+            <div class="fi">✦</div>
+            <div><h4>ESOMAR Certified</h4><p>Ethical conduct & methodological rigor</p></div>
+          </div>
+        </div>
+        <div class="rv">
+          <div class="sec-tag">Who We Are</div>
+          <h2 class="sec-title">Local Expertise,<br>International Standard</h2>
+          <p class="sec-desc" style="margin-bottom:20px;">Founded in 1995, Market Support combines deep local understanding with world-class research methodology. We partner with leading brands across 20+ industries throughout Thailand.</p>
+          <p style="color:var(--text2);margin-bottom:28px;">Our practices conform to ESOMAR standards, and our 30+ full-time professionals are backed by 200–300 field interviewers nationwide — ensuring quality and scale for every project.</p>
+          <a class="btn btn-teal" onclick="goto('about')">Learn More About Us →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Home: Strengths -->
+  <section class="sec" style="background:var(--cream);">
+    <div class="container">
+      <div class="sec-header center">
+        <div class="sec-tag">Why Market Support</div>
+        <h2 class="sec-title">Built on What Matters</h2>
+        <p class="sec-desc">Four pillars that set us apart — and keep clients coming back.</p>
+      </div>
+      <div class="grid-4">
+        <div class="card rv"><div class="card-icon" style="background:#dbeafe;">👥</div><h3>Our People</h3><p>Every study is overseen by an experienced Research Director for analytical depth and client satisfaction.</p></div>
+        <div class="card rv rv-d1"><div class="card-icon" style="background:#fce7f3;">🎯</div><h3>Customization</h3><p>Each study blends methods and analyses tailored to your unique objectives — no cookie-cutter solutions.</p></div>
+        <div class="card rv rv-d2"><div class="card-icon" style="background:#fef3c7;">⚡</div><h3>Flexibility</h3><p>Our size is our advantage — we accommodate changes quickly and handle urgent requests with ease.</p></div>
+        <div class="card rv rv-d3"><div class="card-icon" style="background:#d1fae5;">✦</div><h3>Quality</h3><p>Rigorous quality at every stage — from research design through data collection, analysis, and reporting.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Home: Services Preview -->
+  <section class="sec home-preview" style="background:var(--white);">
+    <div class="container">
+      <div class="sec-header center">
+        <div class="sec-tag">What We Do</div>
+        <h2 class="sec-title">Comprehensive Research Services</h2>
+        <p class="sec-desc">Supporting clients across every phase of the business cycle with quantitative, qualitative, and specialized research.</p>
+      </div>
+      <div class="preview-grid rv">
+        <div class="preview-card" onclick="goto('services')">
+          <div class="pimg" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=80');"></div>
+          <div class="pbody"><h3>Quantitative Research</h3><p>F2F interviews, CLTs, online surveys, CATI, mystery shopping, and more.</p><span class="link-arrow">Learn more →</span></div>
+        </div>
+        <div class="preview-card" onclick="goto('services')">
+          <div class="pimg" style="background-image:url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=500&q=80');"></div>
+          <div class="pbody"><h3>Qualitative Research</h3><p>Focus groups, IDIs, ethnography, ideation workshops, and online communities.</p><span class="link-arrow">Learn more →</span></div>
+        </div>
+        <div class="preview-card" onclick="goto('services')">
+          <div class="pimg" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80');"></div>
+          <div class="pbody"><h3>Specialized Setup</h3><p>Car clinic research, eye tracking studies, and virtual shelf tests.</p><span class="link-arrow">Learn more →</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Home: Clients Preview -->
+  <section class="sec" style="background:var(--cream);">
+    <div class="container">
+      <div class="sec-header center">
+        <div class="sec-tag">Our Clients</div>
+        <h2 class="sec-title">Trusted by Leading Brands</h2>
+      </div>
+      <div class="pill-cloud rv" style="margin-bottom:40px;">
+        <span class="pill p1 pill-lg">Personal Care</span><span class="pill p2 pill-lg">Telecoms</span>
+        <span class="pill p3">Health & Beauty</span><span class="pill p5">Automotive</span>
+        <span class="pill p4">F&B</span><span class="pill p6">Financial</span>
+        <span class="pill p1">Retail</span><span class="pill p3">Agriculture</span>
+        <span class="pill p2">Healthcare</span><span class="pill p5 pill-lg">Tech & Digital</span>
+        <span class="pill p4">Pet Care</span><span class="pill p6">Education</span>
+      </div>
+      <div class="center-link"><a class="btn btn-outline" onclick="goto('clients')">View All Clients →</a></div>
+    </div>
+  </section>
+
+  <!-- Home: CTA -->
+  <section class="cta-sec">
+    <div class="container">
+      <h2>Ready to Uncover Your<br>Next Opportunity?</h2>
+      <p>Let's discuss how our research expertise can help you make smarter decisions.</p>
+      <a class="btn btn-w" onclick="goto('contact')">Start a Conversation →</a>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PAGE: ABOUT                            -->
+<!-- ═══════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="page-banner"><div class="c c1"></div><div class="c c2"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="goto('home')">Home</a><span class="sep">›</span><span>About Us</span></div>
+      <h1>Who We Are</h1>
+      <p>A well-established Thai market research firm delivering local understanding with international-standard expertise since 1995.</p>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="container">
+      <div class="about-2col">
+        <div class="about-img-wrap rv" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80');">
+          <div class="float-badge"><div class="fi">✦</div><div><h4>ESOMAR Member</h4><p>Conforming to global research standards</p></div></div>
+        </div>
+        <div class="rv">
+          <div class="sec-tag">Our Story</div>
+          <h2 class="sec-title">Three Decades of Trusted Research</h2>
+          <p style="color:var(--text2);margin-bottom:16px;">Market Support was established in 1995 with a clear aim: provide local understanding and expertise at an international standard. We started small — with a dedicated team and loyal clients who believed in us.</p>
+          <p style="color:var(--text2);margin-bottom:16px;">Today, we've grown into a medium-sized full-service research firm with 30+ full-time professionals, 200–300 part-time interviewers on call, and a track record spanning 20+ industries.</p>
+          <p style="color:var(--text2);">Our practices conform to ESOMAR standards, and our services cover qualitative and quantitative research, desk research, workshops, and advanced analytical techniques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--cream);">
+    <div class="container">
+      <div class="sec-header center"><div class="sec-tag">Our Strengths</div><h2 class="sec-title">What Sets Us Apart</h2></div>
+      <div class="grid-4">
+        <div class="card rv"><div class="card-icon" style="background:#dbeafe;">👥</div><h3>Our People</h3><p>A dedicated team with integrity and personalized attention. Every study is overseen by an experienced Research Director who ensures analytical depth and client satisfaction.</p></div>
+        <div class="card rv rv-d1"><div class="card-icon" style="background:#fce7f3;">🎯</div><h3>Customization</h3><p>Each study is carefully crafted to meet diverse objectives — blending quantitative and qualitative methods, innovative and traditional approaches, and specialized analyses.</p></div>
+        <div class="card rv rv-d2"><div class="card-icon" style="background:#fef3c7;">⚡</div><h3>Flexibility</h3><p>Our company's size allows us to offer exceptional flexibility — easily accommodating changes and urgent requests without the overhead of larger agencies.</p></div>
+        <div class="card rv rv-d3"><div class="card-icon" style="background:#d1fae5;">✦</div><h3>Quality</h3><p>We prioritize quality at every stage — from research design and questionnaire development through data collection, analysis, and reporting.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Our Team Structure</div><h2 class="sec-title">How We're Organized</h2></div>
+      <div class="grid-4">
+        <div class="card rv"><div class="card-icon" style="background:#ccfbf1;">📋</div><h3>Research Analysts & Client Service</h3><p>Led by four experienced research directors who work in close partnership with client accounts across diverse industries.</p></div>
+        <div class="card rv rv-d1"><div class="card-icon" style="background:#fef3c7;">🗺️</div><h3>Field Operations</h3><p>A highly efficient nationwide fieldwork team with 200–300 part-time interviewers, plus dedicated telephone and healthcare interview teams.</p></div>
+        <div class="card rv rv-d2"><div class="card-icon" style="background:#fce7f3;">✅</div><h3>Quality Control</h3><p>Stringent 50–100% QC through back-checks via telephone, in-person visits, or on-site witnessing of interviewer performance.</p></div>
+        <div class="card rv rv-d3"><div class="card-icon" style="background:#dbeafe;">💻</div><h3>Data Processing</h3><p>Sophisticated software and a highly efficient data processing unit that further ensures accuracy and reliability of results.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--cream);">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Tools & Platforms</div><h2 class="sec-title">Our Research Technology</h2><p class="sec-desc">We utilize industry-leading platforms to enhance workflow efficiency and analytical capabilities.</p></div>
+      <div class="grid-3">
+        <div class="card rv"><h3>SurveyToGo (Dooblo)</h3><p>Mobile CAPI platform for field data collection — supporting complex survey logic on smartphones and tablets.</p></div>
+        <div class="card rv rv-d1"><h3>Alchemer</h3><p>Professional online survey platform for CAWI studies — with custom templates and advanced question types.</p></div>
+        <div class="card rv rv-d2"><h3>QPSMR & XLSTAT</h3><p>Cross-tabulation software and statistical analysis tools for significance testing, factor analysis, cluster analysis, conjoint, and more.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-sec">
+    <div class="container"><h2>Want to Learn More?</h2><p>Get in touch with our team to discuss your research needs.</p><a class="btn btn-w" onclick="goto('contact')">Contact Us →</a></div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PAGE: SERVICES                         -->
+<!-- ═══════════════════════════════════════ -->
+<div class="page" id="page-services">
+  <div class="page-banner"><div class="c c1"></div><div class="c c2"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="goto('home')">Home</a><span class="sep">›</span><span>Services</span></div>
+      <h1>Services & Research Expertise</h1>
+      <p>An extensive range of data collection techniques and research disciplines — ensuring fit for purpose, quality, and speed.</p>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Data Collection</div><h2 class="sec-title">Research Methods</h2></div>
+      <div class="tabs">
+        <button class="tab active" onclick="stab('sq',this)">📋 Quantitative</button>
+        <button class="tab" onclick="stab('sl',this)">💬 Qualitative</button>
+        <button class="tab" onclick="stab('ss',this)">🔧 Specialized</button>
+      </div>
+      <div class="tab-panel active" id="sq">
+        <div class="grid-3">
+          <div class="method"><span class="ck">✓</span> Face-to-Face Interviews (Random / Purposive)</div>
+          <div class="method"><span class="ck">✓</span> Central Location Tests (CLT)</div>
+          <div class="method"><span class="ck">✓</span> Exit Interviews</div>
+          <div class="method"><span class="ck">✓</span> Home Use Tests</div>
+          <div class="method"><span class="ck">✓</span> Telephone Interviews (CATI)</div>
+          <div class="method"><span class="ck">✓</span> Gang Surveys</div>
+          <div class="method"><span class="ck">✓</span> Online Surveys</div>
+          <div class="method"><span class="ck">✓</span> Mystery Shopping</div>
+        </div>
+      </div>
+      <div class="tab-panel" id="sl">
+        <div class="grid-3">
+          <div class="method"><span class="ck">✓</span> Focus Group Discussions</div>
+          <div class="method"><span class="ck">✓</span> In-Depth Interviews</div>
+          <div class="method"><span class="ck">✓</span> Consumer Diaries</div>
+          <div class="method"><span class="ck">✓</span> Pair Interviews / Triads</div>
+          <div class="method"><span class="ck">✓</span> Reconvened Sessions</div>
+          <div class="method"><span class="ck">✓</span> Ethnography / Home Visits</div>
+          <div class="method"><span class="ck">✓</span> Ideation Workshops</div>
+          <div class="method"><span class="ck">✓</span> Online Diary / Community</div>
+          <div class="method"><span class="ck">✓</span> Accompanied Shopping</div>
+          <div class="method"><span class="ck">✓</span> Livestreaming Interviews</div>
+        </div>
+      </div>
+      <div class="tab-panel" id="ss">
+        <div class="grid-3">
+          <div class="method"><span class="ck">✓</span> Car Clinic Research</div>
+          <div class="method"><span class="ck">✓</span> Eye Tracking Studies</div>
+          <div class="method"><span class="ck">✓</span> Virtual / Stimulus Shelf Tests</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-sec">
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="sec-header"><div class="sec-tag">Research Expertise</div><h2 class="sec-title">Supporting Clients Across<br>the Entire Business Cycle</h2><p class="sec-desc">Five integrated research disciplines — from early-stage understanding to post-launch monitoring.</p></div>
+      <div class="grid-5">
+        <div class="d-card rv"><div class="d-num">01</div><h3>Consumer & Market Knowledge</h3><p>Understanding behaviors, needs, and the competitive landscape.</p>
+          <ul><li>Consumer journey mapping</li><li>Segmentation & targeting</li><li>Shopper insights</li><li>Media & touchpoints</li></ul></div>
+        <div class="d-card rv rv-d1"><div class="d-num">02</div><h3>Ideation & Screening</h3><p>Exploring and screening potential products and services.</p>
+          <ul><li>Idea generation</li><li>NDP screening</li><li>Concept testing</li></ul></div>
+        <div class="d-card rv rv-d2"><div class="d-num">03</div><h3>Developing & Prototyping</h3><p>Testing acceptance and fine-tuning before launch.</p>
+          <ul><li>Product testing (B2C/B2B)</li><li>Packaging & shelf tests</li><li>Pricing sensitivity</li><li>Car clinic</li></ul></div>
+        <div class="d-card rv rv-d3"><div class="d-num">04</div><h3>Projecting</h3><p>Uncovering market potential and mitigating risks.</p>
+          <ul><li>Volume estimation</li><li>Conjoint analysis</li><li>Brand positioning</li><li>Go-to-market studies</li></ul></div>
+        <div class="d-card rv rv-d4"><div class="d-num">05</div><h3>Evaluation & Monitoring</h3><p>Tracking performance and preserving competitiveness.</p>
+          <ul><li>Post-launch evaluation</li><li>Customer satisfaction</li><li>Brand health tracking</li><li>Mystery shopping</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--cream);">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Virtual Capabilities</div><h2 class="sec-title">Online & Remote Research</h2><p class="sec-desc">Fully equipped for virtual interviews, online group discussions, and remote product testing.</p></div>
+      <div class="grid-3">
+        <div class="card rv"><div class="card-icon" style="background:#dbeafe;">🖥️</div><h3>Virtual Sessions</h3><p>Full setup and broadcast management with session recordings and multi-language interpretation services.</p></div>
+        <div class="card rv rv-d1"><div class="card-icon" style="background:#fef3c7;">📦</div><h3>Remote Product Testing</h3><p>Products anonymized and delivered to respondents' homes before the live session for unboxing during discussion.</p></div>
+        <div class="card rv rv-d2"><div class="card-icon" style="background:#fce7f3;">📱</div><h3>UX/UI Testing</h3><p>Screen sharing and prototype link testing for comprehensive user experience evaluation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-sec">
+    <div class="container"><h2>Need a Research Partner?</h2><p>Let's find the right methodology for your business challenge.</p><a class="btn btn-w" onclick="goto('contact')">Get In Touch →</a></div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PAGE: TEAM                             -->
+<!-- ═══════════════════════════════════════ -->
+<div class="page" id="page-team">
+  <div class="page-banner"><div class="c c1"></div><div class="c c2"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="goto('home')">Home</a><span class="sep">›</span><span>Team</span></div>
+      <h1>Our Team</h1>
+      <p>Experienced research directors, skilled moderators, and multilingual translators — all working together to deliver actionable insights.</p>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Research Leadership</div><h2 class="sec-title">Analysis Team</h2></div>
+      <div class="grid-3">
+        <div class="t-card rv"><div class="t-avatar" style="background:linear-gradient(135deg,#0d9488,#10b981);">C</div><h3>Chalit Manipalviratn</h3><div class="t-role">Managing Partner</div><p>24+ years specializing in quantitative research across FMCG, telecoms, and automotive. Guest speaker at TMRS and Assumption University. Bachelor of Accountancy (Chula), Master of Commerce (UNSW).</p><div class="t-email">✉ chalit@marketsupport.co.th</div></div>
+        <div class="t-card rv rv-d1"><div class="t-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">C</div><h3>Chatinee Trilertmala</h3><div class="t-role">Managing Partner</div><p>20+ years across both quant and qual — from attitude & usage studies to brand analysis and consumer exploration. MBA Marketing (CQU Australia), BA (Chula).</p><div class="t-email">✉ chatinee@marketsupport.co.th</div></div>
+        <div class="t-card rv rv-d2"><div class="t-avatar" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">S</div><h3>Sirin Suchintabandid</h3><div class="t-role">Senior Research Director</div><p>Specialist in new product launches, brand health, customer satisfaction, and campaign effectiveness. Master of Biotech & Engineering (UPenn), BSc Biochemistry (Chula).</p><div class="t-email">✉ sirin@marketsupport.co.th</div></div>
+        <div class="t-card rv"><div class="t-avatar" style="background:linear-gradient(135deg,#ec4899,#f43f5e);">C</div><h3>Chaporn Manipalviratn</h3><div class="t-role">Research Director</div><p>Passionate qualitative researcher bringing insights to life through focus groups, workshops, and creative exploration. MBA (Strayer), BA Mass Comm (Chula).</p><div class="t-email">✉ chaporn@marketsupport.co.th</div></div>
+        <div class="t-card rv rv-d1"><div class="t-avatar" style="background:linear-gradient(135deg,#0ea5e9,#06b6d4);">S</div><h3>Sanida Na Ranong</h3><div class="t-role">Associate Director</div><p>16 years with Market Support. Expertise in concept, product, and packaging testing across diverse categories. BCA Marketing (Victoria, NZ), Master Marketing (UQ, Australia).</p><div class="t-email">✉ sanida@marketsupport.co.th</div></div>
+        <div class="t-card rv rv-d2"><div class="t-avatar" style="background:linear-gradient(135deg,#84cc16,#22c55e);">W</div><h3>Wichayu T.</h3><div class="t-role">Associate Director</div><p>10+ years in qualitative research — focus groups, IDIs, and customized setups for automotive, apps, FMCG, and services. MBA Marketing (UIBE Beijing).</p><div class="t-email">✉ wichayu@marketsupport.co.th</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--cream);">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Qualitative Expertise</div><h2 class="sec-title">Our Moderators</h2><p class="sec-desc">Experienced moderators with 14–30 years of research experience, each bringing their unique style to group discussions and interviews.</p></div>
+      <div class="grid-4">
+        <div class="t-card rv"><div class="t-avatar" style="background:linear-gradient(135deg,#d946ef,#a855f7);">K</div><h3>Kamonphat R.</h3><div class="t-role">Senior Moderator</div><p>30+ years in consumer research. Known for bringing group discussions to life with an engaging, insightful style across F&B, personal care, automotive, and financial sectors.</p></div>
+        <div class="t-card rv rv-d1"><div class="t-avatar" style="background:linear-gradient(135deg,#f97316,#eab308);">P</div><h3>Pimachart S.</h3><div class="t-role">Senior Moderator</div><p>25+ years experience. Expert in projective techniques and ideation workshops for FMCG, automotive, medical, and cosmetics. Previously with Unilever.</p></div>
+        <div class="t-card rv rv-d2"><div class="t-avatar" style="background:linear-gradient(135deg,#14b8a6,#06b6d4);">S</div><h3>Sutisa S.</h3><div class="t-role">Moderator</div><p>20 years in marketing research. Casual and natural moderating style that gets participants to share openly. Specializes in major FMCG brands.</p></div>
+        <div class="t-card rv rv-d3"><div class="t-avatar" style="background:linear-gradient(135deg,#f43f5e,#e11d48);">A</div><h3>Arinya T.</h3><div class="t-role">Moderator</div><p>14+ years across FMCG, automotive, digital, healthcare, and government. Covers consumer goods, technology, and financial services research.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Language Support</div><h2 class="sec-title">Our Translators</h2><p class="sec-desc">Professional simultaneous interpreters covering English, Chinese, Japanese, and Korean — each with deep market research experience.</p></div>
+      <div class="grid-4">
+        <div class="card rv"><h3>🇬🇧 English Translators</h3><p>Lisa, Tommy, Gene, and Bai — experienced simultaneous interpreters working with leading research firms and multinationals since the early 2000s.</p></div>
+        <div class="card rv rv-d1"><h3>🇨🇳 Chinese Translators</h3><p>Jenny and June — trilingual interpreters (Thai-Chinese-English) with expertise in tech, automotive, and consumer research.</p></div>
+        <div class="card rv rv-d2"><h3>🇯🇵 Japanese Translator</h3><p>Aoi Kawamura — interpreting Thai↔Japanese since 1990, covering automotive, toiletries, beverages, cosmetics, and food sectors.</p></div>
+        <div class="card rv rv-d3"><h3>🇰🇷 Korean Translator</h3><p>Heajung Kang — experienced in market research, electronics, and government relations interpretation between Thai and Korean.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-sec">
+    <div class="container"><h2>Work With Our Team</h2><p>Reach out to discuss your next research project.</p><a class="btn btn-w" onclick="goto('contact')">Contact Us →</a></div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PAGE: FACILITIES                       -->
+<!-- ═══════════════════════════════════════ -->
+<div class="page" id="page-facilities">
+  <div class="page-banner"><div class="c c1"></div><div class="c c2"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="goto('home')">Home</a><span class="sep">›</span><span>Facilities</span></div>
+      <h1>Our Facilities</h1>
+      <p>Purpose-built research spaces across Bangkok — from intimate focus group rooms to large-scale car clinic venues.</p>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Focus Group</div><h2 class="sec-title">Discussion Facility</h2><p class="sec-desc">Our in-house facility at Vanit Building 2 is crafted to create a comfortable environment, promoting smooth exchanges of thoughts and ideas.</p></div>
+      <div class="grid-2">
+        <div class="about-img-wrap rv" style="height:380px;background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80');">
+          <div class="float-badge"><div class="fi">🎙️</div><div><h4>Full AV Setup</h4><p>Recording with simultaneous translation</p></div></div>
+        </div>
+        <div class="rv">
+          <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:20px;">Key Features</h3>
+          <div class="feat"><span class="ck">✓</span> Audiovisual local language and simultaneous translation recording</div>
+          <div class="feat"><span class="ck">✓</span> Flat screen TV for viewing TVCs, print ads, and stimulus materials</div>
+          <div class="feat"><span class="ck">✓</span> Observation room comfortably seating 12 observers with headsets</div>
+          <div class="feat"><span class="ck">✓</span> Additional viewing via TV in meeting room</div>
+          <div class="feat"><span class="ck">✓</span> Remote viewing through online platform</div>
+          <div class="feat"><span class="ck">✓</span> Wide selection of workshop and ice-breaker materials</div>
+          <div class="feat"><span class="ck">✓</span> Secure Wi-Fi and complimentary refreshments</div>
+          <div class="feat"><span class="ck">✓</span> Moderators each with 20+ years experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--cream);">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Fieldwork Venues</div><h2 class="sec-title">CLT & Interview Locations</h2></div>
+      <div class="grid-3">
+        <div class="photo-card rv"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=500&q=80');"></div><div class="body"><h3>Vanit Place Building 2</h3><p class="sub">📍 Phetchaburi Road, Ratchathewi</p><div class="feat"><span class="ck">✓</span> Configurable interview booths</div><div class="feat"><span class="ck">✓</span> Near BTS/MRT stations</div></div></div>
+        <div class="photo-card rv rv-d1"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&q=80');"></div><div class="body"><h3>Dhammalert Building</h3><p class="sub">📍 Sukhumvit Road (BTS Nana–Asoke)</p><div class="feat"><span class="ck">✓</span> Spacious interview rooms</div><div class="feat"><span class="ck">✓</span> Central Bangkok location</div></div></div>
+        <div class="photo-card rv rv-d2"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1462826303086-329426d1aef5?w=500&q=80');"></div><div class="body"><h3>BBD Building</h3><p class="sub">📍 Bang Rak, near Samyan</p><div class="feat"><span class="ck">✓</span> Large flexible spaces</div><div class="feat"><span class="ck">✓</span> Product preparation areas</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      <div class="sec-header"><div class="sec-tag">Car Clinic</div><h2 class="sec-title">Large-Format Research Studios</h2><p class="sec-desc">Full car clinic management — venue setup, vehicle sourcing, recruitment, interviews, and FGD with Zoom broadcasting.</p></div>
+      <div class="grid-3">
+        <div class="photo-card rv"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&q=80');"></div><div class="body"><h3>Moon Star Studio</h3><p class="sub">📍 Lardprao 80, Wang Thonglang</p><div class="feat"><span class="ck">✓</span> Full vehicle display capability</div></div></div>
+        <div class="photo-card rv rv-d1"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1565043666747-69f6646db940?w=500&q=80');"></div><div class="body"><h3>MYT Studio</h3><p class="sub">📍 Krungthep Kreetha, Bang Kapi</p><div class="feat"><span class="ck">✓</span> Large warehouse-style space</div></div></div>
+        <div class="photo-card rv rv-d2"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1574023278981-59ee8489f367?w=500&q=80');"></div><div class="body"><h3>Centerpoint Studio</h3><p class="sub">📍 Lasalle Road, Bang Na</p><div class="feat"><span class="ck">✓</span> Multiple studio halls</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-sec">
+    <div class="container"><h2>Need a Venue for Your Study?</h2><p>We'll help you find the right space and setup for your research.</p><a class="btn btn-w" onclick="goto('contact')">Book a Facility →</a></div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PAGE: CLIENTS                          -->
+<!-- ═══════════════════════════════════════ -->
+<div class="page" id="page-clients">
+  <div class="page-banner"><div class="c c1"></div><div class="c c2"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="goto('home')">Home</a><span class="sep">›</span><span>Clients</span></div>
+      <h1>Our Clients</h1>
+      <p>Trusted by leading brands across every major industry sector in Thailand — from global multinationals to local market leaders.</p>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="container">
+      <div class="sec-header center"><div class="sec-tag">Client Portfolio</div><h2 class="sec-title">Across Every Major Sector</h2></div>
+      <div class="grid-4">
+        <div class="cl-card rv"><div class="cl-icon">🍜</div><h4>Food & Beverage</h4><p>Ajinomoto, BJC Foods, Betagro, CPF, Diageo Moët Hennessy, F&N, Nestlé, Pataya Food Group, SCOTCH, Thai Coconut, Thai Wah, Universal Robina</p></div>
+        <div class="cl-card rv rv-d1"><div class="cl-icon">💊</div><h4>Healthcare</h4><p>Abbott, Blackmores, Delta, Johnson & Johnson, IQVIA, Just Worldwide, Thonburi Healthcare Group</p></div>
+        <div class="cl-card rv rv-d2"><div class="cl-icon">🚗</div><h4>Automotive</h4><p>Honda, Value Able, Brightline Consultants, HCR</p></div>
+        <div class="cl-card rv rv-d3"><div class="cl-icon">📱</div><h4>Tech & Digital</h4><p>LINE, ByteDance, Lineman, Inception, Wongnai</p></div>
+        <div class="cl-card rv"><div class="cl-icon">🏦</div><h4>Financial</h4><p>Kiatnakin Phatra, TTB, Cigna, AIA, Thaivivat Insurance</p></div>
+        <div class="cl-card rv rv-d1"><div class="cl-icon">🛒</div><h4>Retail</h4><p>Siam Piwat, Central Group, CPN, Gaysorn Village, Lawson 108, Simon, Power Buy, Life Center</p></div>
+        <div class="cl-card rv rv-d2"><div class="cl-icon">🌾</div><h4>Agriculture</h4><p>East-West Seed, Mitr Phol Group, Syngenta, Soil Mate, YARA, Q&Q Research Insights</p></div>
+        <div class="cl-card rv rv-d3"><div class="cl-icon">🐾</div><h4>Pet Care</h4><p>Nestlé Purina, Virbac, Pataya Food Group</p></div>
+        <div class="cl-card rv"><div class="cl-icon">📡</div><h4>Telecoms</h4><p>True Corporation, Thai PBS</p></div>
+        <div class="cl-card rv rv-d1"><div class="cl-icon">🎓</div><h4>Education</h4><p>Leading Thai universities and educational institutions</p></div>
+        <div class="cl-card rv rv-d2"><div class="cl-icon">🍽️</div><h4>Food Service</h4><p>Dairy Queen, Minor Food Group, Hana</p></div>
+        <div class="cl-card rv rv-d3"><div class="cl-icon">🧪</div><h4>Flavor & Fragrance</h4><p>Keva, Takasago, IFF, MANE</p></div>
+        <div class="cl-card rv"><div class="cl-icon">🏭</div><h4>Industrial</h4><p>PTT, SN Group</p></div>
+        <div class="cl-card rv rv-d1"><div class="cl-icon">🔬</div><h4>Research Agencies</h4><p>MMR, Macromill, MDI, MW Research</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--cream);">
+    <div class="container">
+      <div class="sec-header center"><div class="sec-tag">Industries</div><h2 class="sec-title">Deep Expertise Across Verticals</h2></div>
+      <div class="pill-cloud rv">
+        <span class="pill p1 pill-lg">Personal Care, Hygiene & Cosmetics</span>
+        <span class="pill p2 pill-lg">Telecoms</span>
+        <span class="pill p5 pill-lg">Household & Fabric Care</span>
+        <span class="pill p3">Health & Beauty Supplements</span>
+        <span class="pill p4">Foods & Confectionery</span>
+        <span class="pill p6">Beverages</span>
+        <span class="pill p1">Agricultural Products</span>
+        <span class="pill p2">Education</span>
+        <span class="pill p3">Automotive</span>
+        <span class="pill p5">Fashion & Apparel</span>
+        <span class="pill p4">Travel & Tourism</span>
+        <span class="pill p6">Hard-lines</span>
+        <span class="pill p1">Pet Nutrition & Care</span>
+        <span class="pill p3">Financial Services</span>
+        <span class="pill p2">Real Estate</span>
+        <span class="pill p5 pill-lg">Healthcare</span>
+        <span class="pill p4 pill-lg">Tech & Digital</span>
+        <span class="pill p6">Retail</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-sec">
+    <div class="container"><h2>Join Our Growing Client List</h2><p>Partner with us on your next research project.</p><a class="btn btn-w" onclick="goto('contact')">Get Started →</a></div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PAGE: CONTACT                          -->
+<!-- ═══════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-banner"><div class="c c1"></div><div class="c c2"></div>
+    <div class="container">
+      <div class="breadcrumb"><a onclick="goto('home')">Home</a><span class="sep">›</span><span>Contact</span></div>
+      <h1>Contact Us</h1>
+      <p>We'd love to hear about your research needs. Reach out and let's start a conversation.</p>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info rv">
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div><h4>Visit Us</h4><p>1126/2 Vanit Building 2, Unit 1103-1105, 11th Floor<br>New Petchburi Road, Makkasan, Ratchathevi<br>Bangkok 10400, Thailand</p></div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div><h4>Call Us</h4><p>+662 255 8575-7<br>Fax: +662 255 8578</p></div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div><h4>Email Us</h4><p>chalit@marketsupport.co.th<br>chatinee@marketsupport.co.th</p></div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🕐</div>
+            <div><h4>Office Hours</h4><p>Monday – Friday: 9:00 AM – 6:00 PM<br>Saturday – Sunday: Closed</p></div>
+          </div>
+        </div>
+        <div class="contact-form rv rv-d1">
+          <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:24px;">Send Us a Message</h3>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name"></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email</label><input type="email" placeholder="you@company.com"></div>
+            <div class="form-group"><label>Phone</label><input type="tel" placeholder="+66..."></div>
+          </div>
+          <div class="form-group"><label>Company</label><input type="text" placeholder="Your company name"></div>
+          <div class="form-group"><label>Research Interest</label>
+            <select><option value="">Select a research area</option><option>Quantitative Research</option><option>Qualitative Research</option><option>Product Testing</option><option>Brand Study</option><option>Customer Satisfaction</option><option>Segmentation</option><option>Other</option></select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your research needs..."></textarea></div>
+          <button class="btn btn-teal" style="width:100%;justify-content:center;">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--cream);">
+    <div class="container">
+      <div class="sec-header center"><div class="sec-tag">Location</div><h2 class="sec-title">Find Us</h2></div>
+      <div class="map-frame rv">
+        <div style="text-align:center;padding:40px;">
+          <p style="font-size:1.2rem;margin-bottom:12px;">📍</p>
+          <p style="font-weight:600;margin-bottom:8px;">Vanit Building 2, 11th Floor</p>
+          <p style="font-size:0.88rem;">New Petchburi Road, Makkasan, Ratchathewi, Bangkok</p>
+          <a href="https://goo.gl/maps/BrptdmpKo4R2" target="_blank" class="btn btn-outline" style="margin-top:20px;font-size:0.85rem;padding:10px 24px;">Open in Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ FOOTER (shared) ═══ -->
+<footer id="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="MSP_Logo.png" alt="Market Support" class="ft-logo">
+        <p>Thailand's trusted market research partner since 1995. Local understanding, international standard.</p>
+        <p style="margin-top:14px;font-size:0.82rem;">1126/2 Vanit Building 2, 11th Floor<br>New Petchburi Rd, Makkasan<br>Bangkok 10400, Thailand</p>
+      </div>
+      <div class="ft-col"><h4>Company</h4>
+        <a onclick="goto('about')">About Us</a><a onclick="goto('team')">Our Team</a><a onclick="goto('clients')">Clients</a><a onclick="goto('facilities')">Facilities</a>
+      </div>
+      <div class="ft-col"><h4>Services</h4>
+        <a onclick="goto('services')">Quantitative</a><a onclick="goto('services')">Qualitative</a><a onclick="goto('services')">Research Expertise</a><a onclick="goto('services')">Virtual Research</a>
+      </div>
+      <div class="ft-col"><h4>Contact</h4>
+        <a href="tel:+6622558575">+662 255 8575-7</a>
+        <a href="mailto:chalit@marketsupport.co.th">chalit@marketsupport.co.th</a>
+        <a href="mailto:chatinee@marketsupport.co.th">chatinee@marketsupport.co.th</a>
+      </div>
+    </div>
+    <div class="ft-bottom"><span>© 2025 Market Support Company Limited</span><span>ESOMAR Member</span></div>
+  </div>
+</footer>
+
+<script>
+// ─── ROUTING ───
+function goto(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + page);
+  if (target) { target.classList.add('active'); target.style.opacity = '0'; setTimeout(() => target.style.opacity = '1', 10); }
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  // Update nav
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === page);
+  });
+  // Re-observe reveals
+  setTimeout(initReveal, 100);
+  history.pushState(null, '', '#' + page);
+}
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// Load from hash
+window.addEventListener('load', () => {
+  const hash = location.hash.replace('#', '') || 'home';
+  goto(hash);
+});
+window.addEventListener('popstate', () => {
+  const hash = location.hash.replace('#', '') || 'home';
+  goto(hash);
+});
+
+// ─── NAV SCROLL ───
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// ─── TABS ───
+function stab(id, btn) {
+  btn.closest('.sec, section').querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.closest('.sec, section').querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// ─── REVEAL ───
+function initReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rv:not(.vis)').forEach(el => obs.observe(el));
+}
+initReveal();
+</script>
+</body>
+</html>
