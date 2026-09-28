@@ -1,0 +1,33 @@
+/* Market Support — shared site rules (loaded after page CSS) */
+[hidden]{display:none !important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+.form-error{margin:0;padding:12px 14px;border-radius:10px;background:#FDECEC;color:#8A1C1C;font-size:15px;line-height:1.5}
+#clients.is-paused .mq-track{animation-play-state:paused !important}
+
+/* Language toggle */
+.lang-toggle{display:flex;align-items:center;border:1.5px solid #CFD6DF;border-radius:999px;padding:3px;background:#FFFFFF;flex-shrink:0;font-family:'Bricolage Grotesque','Prompt',sans-serif}
+.lang-toggle a{display:flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 9px;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none;color:#13213A;letter-spacing:.02em}
+.lang-toggle a[aria-current="page"]{background:#13213A;color:#FFFFFF}
+.lang-toggle a:not([aria-current]):hover{background:#EEF1F4;color:#13213A}
+
+/* Header layout: logo | links (centred) | EN/TH + CTA */
+nav[aria-label="Main"] .desktop-nav-links a,nav[aria-label="Main"] > a.btn-primary{white-space:nowrap}
+nav[aria-label="Main"] > .lang-toggle{margin-left:auto}
+@media (min-width: 961px){
+  nav[aria-label="Main"]{gap:20px !important}
+  nav[aria-label="Main"] > .desktop-nav-links{margin-left:auto;gap:22px !important}
+  nav[aria-label="Main"] > .lang-toggle + a.btn-primary{margin-left:-6px}
+}
+@media (max-width: 1240px) and (min-width: 961px){
+  nav[aria-label="Main"] > .desktop-nav-links{gap:16px !important;font-size:15px !important}
+}
+@media (max-width: 960px){
+  nav[aria-label="Main"] > .lang-toggle{order:0 !important;width:auto !important;overflow:visible !important;white-space:nowrap !important;padding:3px !important;gap:0 !important;margin-left:auto !important}
+}
+@media (max-width: 600px){
+  nav[aria-label="Main"] > a.btn-primary{display:none !important}
+  nav[aria-label="Main"] > .lang-toggle{order:1 !important}
+  nav[aria-label="Main"] > .mobile-nav-menu{order:2}
+  nav[aria-label="Main"] > .lang-toggle + a:not(.btn-primary){display:none !important}
+}
+@media (max-width: 960px){ nav[aria-label="Main"] > .lang-toggle + a:not(.btn-primary){margin-left:10px} }

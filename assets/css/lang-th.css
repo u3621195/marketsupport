@@ -1,0 +1,6 @@
+html[lang="th"] body,html[lang="th"] body *{font-family:'Prompt',Tahoma,sans-serif !important;}
+html[lang="th"] h1,html[lang="th"] h2,html[lang="th"] h3,html[lang="th"] h4,html[lang="th"] button,html[lang="th"] a,html[lang="th"] label,html[lang="th"] strong{letter-spacing:0 !important;}
+html[lang="th"] h1{line-height:1.13 !important;}
+html[lang="th"] h2{line-height:1.16 !important;}
+html[lang="th"] h3{line-height:1.25 !important;}
+html[lang="th"] p,html[lang="th"] li,html[lang="th"] input,html[lang="th"] select,html[lang="th"] textarea{line-height:1.7 !important;}
