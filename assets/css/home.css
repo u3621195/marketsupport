@@ -154,3 +154,46 @@ nav[aria-label="Main"] > a:first-child{gap:8px !important}
   #facilities .facility-gallery-image{aspect-ratio:4/3;border-radius:18px}
   #facilities .facility-gallery-item figcaption{left:12px;bottom:12px;font-size:12px;padding:7px 11px}
 }
+
+
+/* ---------- Heading size controls ----------
+   English and Thai are separated so each language can be tuned independently.
+   Current values reproduce the existing design exactly.
+   Change only the values in the screen-size group you want to test. */
+
+/* ===== DESKTOP / DEFAULT ===== */
+/* English */
+html[lang="en"] .hero-title{font-size:76px !important}
+html[lang="en"] .section-title{font-size:52px !important}
+html[lang="en"] .cta-title{font-size:60px !important}
+
+/* Thai */
+html[lang="th"] .hero-title{font-size:76px !important}
+html[lang="th"] .section-title{font-size:52px !important}
+html[lang="th"] .cta-title{font-size:60px !important}
+
+/* ===== TABLET / SMALL DESKTOP ===== */
+@media (max-width:960px){
+  /* English */
+  html[lang="en"] .hero-title{font-size:52px !important}
+  html[lang="en"] .section-title{font-size:38px !important}
+  html[lang="en"] .cta-title{font-size:44px !important}
+
+  /* Thai */
+  html[lang="th"] .hero-title{font-size:52px !important}
+  html[lang="th"] .section-title{font-size:38px !important}
+  html[lang="th"] .cta-title{font-size:44px !important}
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:600px){
+  /* English */
+  html[lang="en"] .hero-title{font-size:44px !important}
+  html[lang="en"] .section-title{font-size:32px !important}
+  html[lang="en"] .cta-title{font-size:38px !important}
+
+  /* Thai */
+  html[lang="th"] .hero-title{font-size:44px !important}
+  html[lang="th"] .section-title{font-size:32px !important}
+  html[lang="th"] .cta-title{font-size:38px !important}
+}
