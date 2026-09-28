@@ -1,7 +1,7 @@
 /* Market Support — site interactions */
 (function () {
   'use strict';
-  var FORM_EMAIL = 'chalit@marketsupport.co.th';           // enquiry form recipient
+  var FORM_EMAIL = '72593025f40785d30ee411125011213b';  // enquiry form recipient
   var lang = document.documentElement.lang === 'th' ? 'th' : 'en';
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
