@@ -101,6 +101,19 @@
     });
   }
 
+  /* ---------- Desktop back-to-top ---------- */
+  var backTop = $('.back-to-top');
+  if (backTop) {
+    function syncBackTop() {
+      var show = window.innerWidth > 600 && window.scrollY > Math.max(window.innerHeight * 1.25, 700);
+      backTop.classList.toggle('is-visible', show);
+    }
+    window.addEventListener('scroll', syncBackTop, { passive: true });
+    window.addEventListener('resize', syncBackTop);
+    backTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    syncBackTop();
+  }
+
   /* ---------- Enquiry form ---------- */
   var form = $('#contact-form');
   if (form) {
