@@ -145,12 +145,15 @@ nav[aria-label="Main"] > a:first-child{gap:8px !important}
 /* ---------- v2.3 facilities editorial gallery ---------- */
 #facilities .facility-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
 #facilities .facility-gallery-item{margin:0;min-width:0}
-#facilities .facility-gallery-image{width:100%;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:#EEF1F4}
+#facilities .facility-gallery-image{position:relative;width:100%;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:#EEF1F4}
 #facilities .facility-gallery-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 #facilities .facility-observation-item .facility-gallery-image img{object-fit:contain;object-position:center;background:#111}
-#facilities .facility-gallery-item figcaption{margin-top:12px;font-family:'Bricolage Grotesque',sans-serif;font-size:17px;line-height:1.3;font-weight:600;color:#13213A}
+#facilities .facility-gallery-item figcaption{position:absolute;left:18px;bottom:18px;margin:0;background:rgba(19,33,58,.82);color:#fff;padding:9px 13px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif;font-size:13px;line-height:1;font-weight:600;letter-spacing:.01em}
+#facilities .facility-mobile-description{display:none !important}
 @media (max-width:600px){
-  #facilities .facility-gallery{grid-template-columns:1fr;gap:28px}
+  #facilities .facility-gallery{grid-template-columns:1fr;gap:36px}
   #facilities .facility-gallery-image{aspect-ratio:4/3;border-radius:18px}
-  #facilities .facility-gallery-item figcaption{margin-top:10px;font-size:17px}
+  #facilities .facility-gallery-item figcaption{left:12px;bottom:12px;font-size:12px;padding:7px 11px}
+  #facilities .facility-mobile-description{display:flex !important;margin-top:20px}
+  #facilities .facility-descriptions-desktop{display:none !important}
 }
