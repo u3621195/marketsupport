@@ -197,3 +197,44 @@ html[lang="th"] .cta-title{font-size:60px !important}
   html[lang="th"] .section-title{font-size:32px !important}
   html[lang="th"] .cta-title{font-size:38px !important}
 }
+
+/* ---------- v2.7 compact desktop / tablet landscape ----------
+   Covers the gap between the tablet layout (<=960px) and full desktop.
+   Keeps the desktop two-column content layout, but removes the forced
+   1200px page width and gives the header/hero more room to breathe. */
+@media (min-width:961px) and (max-width:1150px){
+  /* Prevent the desktop wrapper from forcing horizontal page overflow. */
+  [style*="min-width: 1200px"]{min-width:0 !important}
+
+  /* Slightly tighter page gutters at this width. */
+  [style*="max-width: 1240px"]{padding-left:32px !important;padding-right:32px !important}
+
+  /* Header: keep logo/language/CTA on the first row and navigation below. */
+  nav[aria-label="Main"]{
+    height:auto !important;
+    flex-wrap:wrap !important;
+    column-gap:18px !important;
+    row-gap:2px !important;
+    padding-top:12px !important;
+    padding-bottom:5px !important;
+  }
+  nav[aria-label="Main"] > .desktop-nav-links{
+    order:3;
+    width:100%;
+    justify-content:flex-start;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    white-space:nowrap;
+    padding:8px 0 10px;
+    gap:26px !important;
+  }
+  nav[aria-label="Main"] > .desktop-nav-links::-webkit-scrollbar{display:none}
+  html{scroll-padding-top:120px}
+
+  /* Hero: retain two columns, but use a size suited to tablet landscape. */
+  #top{column-gap:20px !important}
+  html[lang="en"] .hero-title{font-size:60px !important}
+  html[lang="th"] .hero-title{font-size:60px !important}
+  #top [style*="grid-column: 8 / span 5"]{padding:24px !important}
+}
