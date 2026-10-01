@@ -238,3 +238,33 @@ html[lang="th"] .cta-title{font-size:60px !important}
   html[lang="th"] .hero-title{font-size:60px !important}
   #top [style*="grid-column: 8 / span 5"]{padding:24px !important}
 }
+
+/* ---------- v2.8 research photography integration ---------- */
+.research-photo{margin:0;overflow:hidden;border-radius:18px;background:#DDE3E9;min-width:0}
+.research-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.research-photo--panel{grid-column:1 / -1;margin-top:28px;aspect-ratio:16/7}
+.research-photo--product img{object-position:center 52%}
+.research-photo--car{aspect-ratio:3/1}
+.research-photo--car img{object-position:center center}
+#methods .method-photo{margin:-8px -8px 2px;border-radius:13px;overflow:hidden;aspect-ratio:16/10;background:#243653}
+#methods .method-photo img{display:block;width:100%;height:100%;object-fit:cover}
+#methods .method-photo--clt img{object-position:center center}
+#methods .method-photo--fgd img{object-position:center center}
+#methods .method-photo--specialist img{object-position:center 48%}
+#quality .quality-field-photo{grid-column:1 / -1;margin:0;overflow:hidden;border-radius:20px;aspect-ratio:16/7;background:#EEF1F4}
+#quality .quality-field-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 58%}
+
+@media (max-width:960px){
+  .research-photo--panel{aspect-ratio:16/8;margin-top:24px}
+  #methods .method-photo{aspect-ratio:16/9}
+  #quality .quality-field-photo{aspect-ratio:16/8}
+}
+@media (max-width:600px){
+  .research-photo,.research-photo--panel,#quality .quality-field-photo{border-radius:16px}
+  .research-photo--panel{aspect-ratio:4/3;margin-top:18px}
+  .research-photo--car{aspect-ratio:16/8}
+  .research-photo--car img{object-fit:cover}
+  #methods .method-photo{margin:-4px -4px 2px;aspect-ratio:4/3;border-radius:12px}
+  #quality .quality-field-photo{aspect-ratio:4/3}
+  #quality .quality-field-photo img{object-position:center center}
+}
